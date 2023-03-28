@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3">
+      <div class="card auth">
+        <div *ngIf="loginStatus">
+          Logged In successfully
+        </div>
+        <div class="card-body auth-card">
+          <form (ngSubmit)="check()">  
+            <div class="form-group">
+              <label for="email">Email : </label>
+              <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="form.email" #email="ngModel" required>
+            </div>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red;">Email Must be Valid</div>
+            <div class="form-group">
+              <label for="password">Password : </label>
+              <input type="password" name="password" class="form-control" placeholder="password" [(ngModel)]="form.password" #password="ngModel" required>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red;">Password Must be Valid</div>
+              </div>
+            <div class="text-center">
+              <input type="submit" class="btn btn-my" value="Login" (click)="change()">
+            </div>
+          </form>
+          <div *ngIf="!loginStatus && isClicked">
+            Invalid creditals
+          </div>
+          <div class="text-center sign-up">
+            Don`t have an account ? <a [routerLink]="['/signup']">Sign Up</a> hera.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
